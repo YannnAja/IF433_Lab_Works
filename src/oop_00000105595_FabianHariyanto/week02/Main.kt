@@ -7,6 +7,7 @@ fun main() {
     println("=== PILIH MODUL ===")
     println("1. Student System (Langkah 1-6)")
     println("2. Library System (Tugas 1)")
+    println("3. Mini RPG Battle! (Tugas 2)")
     print("Pilihan: ")
 
     when(scanner.nextInt()) {
@@ -17,6 +18,10 @@ fun main() {
         2 -> {
             scanner.nextLine()
             LibraryMenu(scanner)
+        }
+        3 -> {
+            scanner.nextLine()
+            MiniRPG(scanner)
         }
         else -> println("Keluar")
     }
@@ -72,4 +77,43 @@ fun LibraryMenu(scanner: Scanner) {
     val loan = Loan(title, borrower, duration)
     println("Detail Peminjaman: $title oleh $borrower")
     println("Total Denda: Rp ${loan.calculateFine()}")
+}
+
+fun MiniRPG(scanner: Scanner) {
+    println("\n--- MINI RPG BATTLE ---")
+    print("Nama Hero: ")
+    val heroName = scanner.nextLine()
+    print("Base Damage: ")
+    val damage = scanner.nextInt()
+
+    val myHero = Hero(heroName, damage)
+    var enemyHp = 100
+
+    while (myHero.isAlive() && enemyHp > 0) {
+        println("\nMenu: 1. Serang, 2. Kabur")
+        print("Aksi: ")
+        val choice = scanner.nextInt()
+
+        if (choice == 1) {
+            myHero.attack("Enemy")
+            enemyHp -= myHero.baseDamage
+            println("Sisa HP Musuh: $enemyHp")
+
+            if (enemyHp > 0) {
+                val monsterDmg = (10..20).random()
+                println("Musuh menyerang! Kamu terkena $monsterDmg damage.")
+                myHero.takeDamage(monsterDmg)
+                println("Sisa HP ${myHero.name}: ${myHero.hp}")
+            }
+        } else if (choice == 2) {
+            println("Kamu memilih kabur dari pertarungan!")
+            break
+        }
+    }
+
+    if (!myHero.isAlive()) {
+        println("GAME OVER! ${myHero.name} telah gugur.")
+    } else if (enemyHp <= 0) {
+        println("VICTORY! Musuh berhasil dikalahkan.")
+    }
 }
