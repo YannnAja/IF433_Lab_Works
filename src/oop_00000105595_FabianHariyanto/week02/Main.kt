@@ -3,6 +3,26 @@ import java.util.Scanner
 
 fun main() {
     val scanner = Scanner(System.`in`)
+
+    println("=== PILIH MODUL ===")
+    println("1. Student System (Langkah 1-6)")
+    println("2. Library System (Tugas 1)")
+    print("Pilihan: ")
+
+    when(scanner.nextInt()) {
+        1 -> {
+            scanner.nextLine()
+            menuStudent(scanner)
+        }
+        2 -> {
+            scanner.nextLine()
+            LibraryMenu(scanner)
+        }
+        else -> println("Keluar")
+    }
+}
+
+fun menuStudent(scanner: Scanner) {
     println("--- APLIKASI PMB UMN ---")
 
     print("Masukkan Nama: ")
@@ -31,4 +51,25 @@ fun main() {
             println("Pilihan ngawur, pendaftaran batal!")
         }
     }
+}
+
+fun LibraryMenu(scanner: Scanner) {
+    println("\n--- SISTEM PERPUSTAKAAN ---")
+
+    print("Judul Buku: ")
+    val title = scanner.nextLine()
+
+    print("Peminjam: ")
+    val borrower = scanner.nextLine()
+
+    print("Lama Pinjam (hari): ")
+    var duration = scanner.nextInt()
+
+    if (duration < 0) {
+        duration = 1
+    }
+
+    val loan = Loan(title, borrower, duration)
+    println("Detail Peminjaman: $title oleh $borrower")
+    println("Total Denda: Rp ${loan.calculateFine()}")
 }
