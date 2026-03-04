@@ -13,11 +13,22 @@ fun main() {
     scanner.nextLine()
 
     if (nim.length != 5) {
-        println("ERROR: Pendaftaran dibatalkan. NIM harus 5 karakter!")
+        println("ERROR: Pendaftaran dibatalkan. NIM harus 5 karakter!");
     } else {
-        print("Masukkan Jurusan: ")
-        val major = scanner.nextLine()
-        val s1 = Student(name, nim, major)
-        println("Status: Pendaftaran Selesai.")
+        print("Pilih Jalur (1. Reguler, 2. Umum): ")
+        val type = scanner.nextInt()
+        scanner.nextLine()
+
+        if (type == 1) {
+            print("Masukkan Jurusan: ")
+            val major = scanner.nextLine()
+            val s1 = Student(name, nim, major= major, 0.0)
+            println("Terdaftar di: ${s1.major} dengan GPA awal ${s1.gpa}")
+        } else if (type == 2) {
+            val s2 = Student(name, nim) // Memanggil Secondary [cite: 86]
+            println("Terdaftar di: ${s2.major} dengan GPA awal ${s2.gpa}")
+        } else {
+            println("Pilihan ngawur, pendaftaran batal!")
+        }
     }
 }
