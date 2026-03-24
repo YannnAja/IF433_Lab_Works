@@ -15,6 +15,7 @@ fun main() {
                 println("=> Terdeteksi sebagai Dosen (NIDN: ${pegawai.nidn})")
                 pegawai.mengajar()
             }
+
             is Admin -> {
                 println("=> Terdeteksi sebagai Admin")
                 pegawai.doAdminWork()
@@ -40,5 +41,14 @@ fun main() {
 
         // Coba proses pembayaran (Polymorphism)
         payment.processPayment(75000.0)
+
+        if (payment is EWallet) {
+            if (payment.balance < 75000.0) {
+                println("=> Terdeteksi EWallet kurang saldo. Melakukan auto Top-Up...")
+                payment.topUp(50000.0) // Top up 50.000 (Saldo jadi 100.000)
+                println("=> Mencoba ulang pembayaran...")
+                payment.processPayment(75000.0) // Coba lagi, harusnya berhasil
+            }
+        }
     }
 }
