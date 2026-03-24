@@ -28,4 +28,17 @@ fun main() {
     println("Luas Persegi (5): ${math.hitungLuas(5)}")
     println("Luas Persegi Panjang (4 x 6): ${math.hitungLuas(4, 6)}")
     println("Luas Lingkaran (r 7.0): ${math.hitungLuas(7.0)}")
+
+    println("\n=== TUGAS 2: SISTEM PEMBAYARAN ===")
+    val myEWallet = EWallet("OVO", 50000.0)
+    val myCreditCard = CreditCard("Visa", 100000.0)
+
+    val paymentMethods: List<PaymentMethod> = listOf(myEWallet, myCreditCard)
+
+    for (payment in paymentMethods) {
+        println("\nMencoba memproses pembayaran sebesar 75000.0 menggunakan ${payment.accountName}...")
+
+        // Coba proses pembayaran (Polymorphism)
+        payment.processPayment(75000.0)
+    }
 }
