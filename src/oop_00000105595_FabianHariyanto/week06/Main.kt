@@ -18,4 +18,20 @@ fun main() {
     println("\n=== TESTING CHECKOUT ===")
     processCheckout(method = pay1, amount = 50000.0)
     processCheckout(method = pay2, amount = 150000.0)
+
+    println("\n=== TUGAS MANDIRI: SMART HOME ===")
+    val lamp = SmartLamp("L01", "Ruang Tamu")
+    val speaker = SmartSpeaker("S01", "Google Nest Dapur")
+    val cctv = SmartCCTV("C01", "Ezviz Garasi")
+
+    val hub = SmartHomeHub()
+    hub.addDevice(lamp)
+    hub.addDevice(speaker)
+    hub.addDevice(cctv)
+
+    println("\n=> Manual Test:")
+    cctv.turnOn()
+
+    hub.activateSecurityMode()
+    hub.turnOffAllSwitches()
 }
