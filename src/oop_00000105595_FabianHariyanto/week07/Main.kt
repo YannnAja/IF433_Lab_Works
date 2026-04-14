@@ -36,4 +36,9 @@ fun main() {
         ApiResponse.Loading -> "Tampilkan Spinner"
     }
     println(uiMessage)
+
+    println("\n=== TUGAS: RPG ENGINE SIMULATION ===")
+
+    GameManager.startGame()
+    GameManager.startGame()
 }
