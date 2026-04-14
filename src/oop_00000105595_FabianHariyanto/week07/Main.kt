@@ -45,4 +45,14 @@ fun main() {
     println("\n-> Drop Chance Legendary Item: ${ItemRarity.LEGENDARY.dropChance}%")
     val myWeapon = Weapon.forgeStarterSword()
     println("-> Senjata Awal dibuat: ${myWeapon.item.name} (Durability: ${myWeapon.durability})")
+
+    println("\n-> Pergi ke Blacksmith..")
+    val upgradedItem = myWeapon.item.copy(damage = 25)
+    println("Senjata di-upgrade menjadi: $upgradedItem")
+
+    println("\n-> Memulai Petualangan..")
+    processEvent(BattleState.SafeZone)
+    processEvent(BattleState.MonsterEncounter("Goblin Nakal"))
+    processEvent(BattleState.LootDropped(upgradedItem))
+    processEvent(BattleState.GameOver("Terkena jebakan racun"))
 }
