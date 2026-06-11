@@ -7,3 +7,12 @@ fun writeToFile(fileName: String, content: String) {
     file.writeText(content)
     println("Berhasil menulis ke $fileName")
 }
+
+fun readFromFile(fileName: String) {
+    val file = File(fileName)
+    if (file.exists()) {
+        println("Isi file $fileName:\n${file.readText()}")
+    } else {
+        println("File $fileName tidak ditemukan.")
+    }
+}
