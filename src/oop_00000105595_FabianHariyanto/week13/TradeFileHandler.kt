@@ -10,4 +10,8 @@ object TradeFileHandler {
             file.writeText("Pair,Type,Price,PnL\n")
         }
     }
+
+    fun saveTrade(trade: TradeRecord) {
+        file.appendText("${trade.pair},${trade.type},${trade.price},${trade.pnl}\n")
+    }
 }
