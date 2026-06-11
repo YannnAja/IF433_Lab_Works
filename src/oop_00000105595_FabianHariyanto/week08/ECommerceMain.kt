@@ -11,4 +11,16 @@ fun main() {
 
     val parser = ApiParser()
     println("=== STARTING E-COMMERCE BATCH PROCESS ===")
+
+    for (raw in rawApiData) {
+        try {
+            val product = parser.parseProduct(raw)
+            product?.let {
+                println("Parsed successfully: $it")
+                parser.checkout(it)
+            } ?: println("Skipping unknown product type.")
+        } catch (e: IllegalArgumentException) {
+            println("WARNING - Corrupted Data Skipped: ${e.message}")
+        }
+    }
 }
