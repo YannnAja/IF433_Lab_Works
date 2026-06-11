@@ -19,10 +19,15 @@ object TradeFileHandler {
         if (!file.exists()) return emptyList()
 
         return file.useLines { lines ->
-            lines.drop(1) // Skip baris pertama (Header CSV)
-                .map { line ->
-                    val parts = line.split(",")
-                    TradeRecord(parts[0], parts[1], parts[2].toDouble(), parts[3].toDouble())
+            lines.drop(1)
+                .mapNotNull { line ->
+                    try {
+                        val parts = line.split(",")
+                        TradeRecord(parts[0], parts[1], parts[2].toDouble(), parts[3].toDouble())
+                    } catch (e: Exception) {
+                        println("WARNING: Baris korup dilewati -> $line")
+                        null
+                    }
                 }.toList()
         }
     }
