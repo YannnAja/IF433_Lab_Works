@@ -21,3 +21,18 @@ fun appendToFile(fileName: String, content: String) {
     val file = File(fileName)
     file.appendText(content)
 }
+
+fun main() {
+    println("=== TEST FILE I/O ===")
+    val testFile = "test_io.txt"
+
+    writeToFile(testFile, "Hello File I/O!\n")
+    appendToFile(testFile, "Baris kedua menggunakan append.\n")
+    robustAppend(testFile, "Baris ketiga menggunakan bufferedWriter dan use.\n")
+
+    println("\n--- Membaca seluruh isi ---")
+    readFromFile(testFile)
+
+    println("--- Membaca per baris ---")
+    readLinesWithUse(testFile)
+}
