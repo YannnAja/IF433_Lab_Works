@@ -22,4 +22,6 @@ fun main() {
 
     println("Data yang berhasil dipulihkan:")
     loadedData.forEach { println(it) }
+
+    val totalPnl = loadedData.sumOf { it.pnl }
 }
