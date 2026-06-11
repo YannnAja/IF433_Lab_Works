@@ -33,5 +33,10 @@ fun main() {
     searchResult?.let {
         println("Ditemukan: ${it.diagnose()}")
     }
+
+    println("\n--- SUMMARY SISTEM ---")
+    with(homeDevices) {
+        println("Total perangkat di sistem: ${this.size}")
+    }
 }
 
