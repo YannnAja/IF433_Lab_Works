@@ -7,3 +7,9 @@ fun robustAppend(fileName: String, content: String) {
         out.write(content)
     }
 }
+
+fun readLinesWithUse(fileName: String) {
+    File(fileName).useLines { lines ->
+        lines.forEach { println("Line Read: $it") }
+    }
+}
