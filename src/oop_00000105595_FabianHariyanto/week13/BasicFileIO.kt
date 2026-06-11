@@ -16,3 +16,8 @@ fun readFromFile(fileName: String) {
         println("File $fileName tidak ditemukan.")
     }
 }
+
+fun appendToFile(fileName: String, content: String) {
+    val file = File(fileName)
+    file.appendText(content)
+}
