@@ -19,4 +19,7 @@ fun main() {
 
     println("\n--- MEMBACA DATA DARI CSV ---")
     val loadedData = TradeFileHandler.loadTrades()
+
+    println("Data yang berhasil dipulihkan:")
+    loadedData.forEach { println(it) }
 }
