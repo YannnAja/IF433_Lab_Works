@@ -13,4 +13,7 @@ fun main() {
 
     sessionTrades.forEach { TradeFileHandler.saveTrade(it) }
     println("Berhasil menyimpan ${sessionTrades.size} trade sehat ke CSV.")
+
+    File("trades.csv").appendText("DOGEUSDT,LONG,CORRUPTED_PRICE,100\n")
+    println("Simulasi data DOGE korup dimasukkan ke CSV.")
 }
