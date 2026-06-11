@@ -16,4 +16,7 @@ fun main() {
 
     File("trades.csv").appendText("DOGEUSDT,LONG,CORRUPTED_PRICE,100\n")
     println("Simulasi data DOGE korup dimasukkan ke CSV.")
+
+    println("\n--- MEMBACA DATA DARI CSV ---")
+    val loadedData = TradeFileHandler.loadTrades()
 }
