@@ -27,5 +27,11 @@ fun main() {
     homeDevices.add(acUnit)
 
     homeDevices.add(SmartDevice("Picolo's Auto Feeder", "Pet Care", true, 10))
+
+    println("\n--- PENCARIAN PERANGKAT ---")
+    val searchResult = homeDevices.find { it.category == "Camera" }
+    searchResult?.let {
+        println("Ditemukan: ${it.diagnose()}")
+    }
 }
 
